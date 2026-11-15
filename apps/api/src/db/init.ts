@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { getDatabase } from './connection.js';
+import { SCHEMA_SQL } from './schemaSql.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,7 +10,15 @@ const __dirname = path.dirname(__filename);
 export function initializeDatabase(): void {
   const db = getDatabase();
   const schemaPath = path.join(__dirname, 'schema.sql');
-  const schemaSql = fs.readFileSync(schemaPath, 'utf8');
+  
+  let schemaSql = SCHEMA_SQL;
+  if (fs.existsSync(schemaPath)) {
+    try {
+      schemaSql = fs.readFileSync(schemaPath, 'utf8');
+    } catch {
+      schemaSql = SCHEMA_SQL;
+    }
+  }
 
   // Execute schema
   db.exec(schemaSql);

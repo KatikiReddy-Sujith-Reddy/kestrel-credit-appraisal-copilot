@@ -12,8 +12,30 @@ import { camRoutes } from './modules/cam/routes.js';
 import { reviewRoutes } from './modules/review/routes.js';
 import { followupRoutes } from './modules/followups/routes.js';
 import { ownerRoutes } from './modules/owner/routes.js';
+import { getDatabase } from './db/connection.js';
+import { initializeDatabase } from './db/init.js';
 
 export async function createServer(): Promise<FastifyInstance> {
+  // Ensure database is initialized and seeded
+  try {
+    const db = getDatabase();
+    const hasApps = db.prepare("SELECT count(*) as c FROM sqlite_master WHERE type='table' AND name='applications'").get() as any;
+    if (!hasApps || hasApps.c === 0) {
+      console.log('[Kestrel API] Initializing fresh database and seed dataset...');
+      const { runSeed } = await import('./seed/seed.js');
+      await runSeed();
+    }
+  } catch (err) {
+    console.warn('[Kestrel API] Database check initialization notice:', err);
+    try {
+      initializeDatabase();
+      const { runSeed } = await import('./seed/seed.js');
+      await runSeed();
+    } catch (seedErr) {
+      console.error('[Kestrel API] Automatic seed error:', seedErr);
+    }
+  }
+
   const app = fastify({
     logger: {
       level: process.env.LOG_LEVEL || 'info',

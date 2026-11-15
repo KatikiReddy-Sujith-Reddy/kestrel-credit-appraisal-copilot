@@ -1,9 +1,14 @@
+import os from 'os';
 import path from 'path';
 import dotenv from 'dotenv';
 
 // Load .env from root workspace or cwd
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 dotenv.config({ path: path.resolve(process.cwd(), '../../.env') });
+
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const defaultDataDir = isServerless ? path.join(os.tmpdir(), 'kestrel-data') : './data';
+const defaultUploadDir = isServerless ? path.join(os.tmpdir(), 'kestrel-uploads') : './uploads';
 
 export const config = {
   // Model Gateway Keys - kept strictly on backend
@@ -23,8 +28,8 @@ export const config = {
   HOST: process.env.HOST || '0.0.0.0',
 
   // Storage
-  DATA_DIR: path.resolve(process.cwd(), process.env.DATA_DIR || './data'),
-  UPLOAD_DIR: path.resolve(process.cwd(), process.env.UPLOAD_DIR || './uploads'),
+  DATA_DIR: path.resolve(process.cwd(), process.env.DATA_DIR || defaultDataDir),
+  UPLOAD_DIR: path.resolve(process.cwd(), process.env.UPLOAD_DIR || defaultUploadDir),
 
   // Pilot bounds
   PILOT_MAX_LOAN_AMOUNT: 250000, // $250,000 maximum pilot facility
