@@ -1,0 +1,19 @@
+{
+  "name": "kestrel-credit-appraisal-copilot",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "apps/api"
+  ],
+  "scripts": {
+    "dev:api": "npm --workspace=apps/api run dev",
+    "dev:web": "npm --workspace=apps/web run dev",
+    "build:api": "npm --workspace=apps/api run build",
+    "build:web": "npm --workspace=apps/web run build",
+    "build": "npm run build:api && npm run build:web",
+    "test": "npm --workspace=apps/api test",
+    "seed": "npm --workspace=apps/api run seed",
+    "start:api": "npm --workspace=apps/api run start"
+  }
+}

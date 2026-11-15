@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-container": "#99efe5", "inverse-primary": "#b9c6ea", "tertiary-fixed": "#dce1ff", "secondary-fixed": "#9cf2e8", "tertiary-container": "#001a60", "on-error": "#ffffff", "on-primary-container": "#7c89aa", "on-secondary-container": "#006f67", "surface-container-low": "#f2f3ff", "on-primary-fixed-variant": "#3a4664", "surface-variant": "#dae2fd", "surface-container": "#eaedff", "on-secondary-fixed-variant": "#00504a", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#0039b5", "primary": "#000a24", "on-tertiary-container": "#5d80ff", "on-surface-variant": "#45464d", "background": "#faf8ff", "on-surface": "#131b2e", "on-background": "#131b2e", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#001551", "outline-variant": "#c5c6ce", "surface-tint": "#525e7d", "tertiary": "#00072c", "error-container": "#ffdad6", "surface-container-high": "#e2e7ff", "secondary": "#006a63", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "primary-fixed": "#d9e2ff", "inverse-on-surface": "#eef0ff", "outline": "#75777e", "primary-container": "#14213d", "primary-fixed-dim": "#b9c6ea", "on-secondary-fixed": "#00201d", "surface-dim": "#d2d9f4", "surface-container-highest": "#dae2fd", "inverse-surface": "#283044", "on-primary-fixed": "#0d1b36", "secondary-fixed-dim": "#80d5cb", "tertiary-fixed-dim": "#b7c4ff", "surface-bright": "#faf8ff", "surface": "#faf8ff", "on-error-container": "#93000a", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1rem", "space-xl": "1.5rem", "margin": "1rem", "margin-tablet": "1.5rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-md": "0.75rem", "gutter": "1rem", "gutter-tablet": "1rem" }, fontFamily: { "headline-sm": ["Inter"], "headline-md": ["Inter"], "display-lg": ["Inter"], "label-lg": ["Inter"], "display-lg-mobile": ["Inter"], "body-lg": ["Inter"], "financial-metric-md": ["Inter"], "headline-lg": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"], "financial-metric-lg": ["Inter"], "financial-table-cell": ["Inter"] }, fontSize: { "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "financial-metric-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "financial-metric-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "financial-table-cell": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "500" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-primary-container text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.08)]"><div class="w-full bg-[#FEF3C7] text-[#92400E] px-margin py-0.5 flex items-center justify-center gap-1.5 font-label-sm text-label-sm uppercase tracking-wider"><span class="material-symbols-outlined text-[12px] leading-none text-[#F59E0B]">warning</span><span class="truncate">SIMULATED DATA • PILOT SCOPE (< ₹25 L) • IST</span></div><div class="h-20 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="Kestrel Enterprise Brand Mark" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrCkEyyxZg7P_0qsk21kmacoVIY49JMZsRpI7Qv5oTa20hj6eoHgi9KsJ6PgEGj5NNo1_3T8TclvVl30666AacM7kWLzXwnkEbDDUer5WDB2M8su0yJgAUPDZM0ZglEbpr_3YSF-e5mjpc3dp2ENvIOerOAoR0p81JM5muHiZdjG8OS-SUuPYtwOnHNzOPkJa82W1FCMUL-sKgwuRyiN-1-i8oJTNFLYDVcq1s0jJZL2"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm tracking-tight text-on-primary font-bold leading-tight">KESTREL</span><span class="font-label-sm text-label-sm text-on-primary-container leading-none uppercase">Rm Hub</span></div><span class="font-label-md text-label-md text-on-primary-container truncate leading-none">Credit Copilot</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button class="h-7 px-space-xs rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center gap-1 min-h-[44px] min-w-[44px] justify-center"><span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span><span>Analyst</span><span class="material-symbols-outlined text-[14px]">expand_more</span></button><button aria-label="Search cases" class="w-11 h-11 flex items-center justify-center text-on-primary hover:text-on-primary-container rounded-full"><span class="material-symbols-outlined text-[20px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center text-on-primary hover:text-on-primary-container rounded-full relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-4 h-4 bg-error text-on-error rounded-full font-label-sm text-[10px] flex items-center justify-center font-bold">3</span></button><div class="flex items-center justify-center ml-0.5"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8_DNxZkg48IdDl2a48zW1FENIlX6deThfUCsb8NYNNWIVSAv1B6nsBR0HdoQwbyOBXGu5nefedSrs1cvBqlaSl8Tl4wSnZjtzEBzWnrikpu8RGovE3fc6vQfCaJa9hBiLkhn1ooQevl7x7m6H_miqavnS2aXgi95V4n1N75wJvVh5CeD41QUMc737ZVDzldu_uj0sB-KTzddRvD-a_dcCErEPmUwpe2dU8o8zYi4"/></div></div></div></header><main class="flex flex-col relative w-full pt-20 pb-36 bg-surface min-h-screen"><div class="flex flex-col w-full pb-10">
+<!-- Top Role & Greeting Context Strip -->
+<section class="px-margin pt-space-md pb-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">person_check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Priya Nair</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] tracking-wide uppercase">RM Pilot</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">SME Portfolio Desk • Western Region</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Active Sync</span>
+</div>
+</section>
+<!-- Contextual Human Governance Disclaimer Banner -->
+<section class="px-margin mb-space-md">
+<div class="bg-surface-container-high rounded-xl p-space-sm shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-tight uppercase">Pilot Governance Notice</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+          SIMULATED DATA • Decision Engine: Human in the loop. Copilot assists in dossier compilation, borrower reminders, and data parsing only.
+        </p>
+</div>
+</div>
+</section>
+<!-- RM KPI Overview (2x2 Grid) -->
+<section class="px-margin mb-space-lg">
+<div class="flex items-center justify-between mb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Portfolio Vitals</h2>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+        Today
+      </span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-label-sm text-label-sm uppercase font-semibold">Assigned Files</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">folder_shared</span>
+</div>
+</div>
+<div class="font-financial-metric-lg text-financial-metric-lg text-on-surface leading-none mb-1">14</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+          ₹2.18 Cr total exposure
+        </div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-error">Docs Missing</span>
+<div class="w-7 h-7 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[18px]">pending_actions</span>
+</div>
+</div>
+<div class="font-financial-metric-lg text-financial-metric-lg text-error leading-none mb-1">9 items</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+          Across 4 applicants
+        </div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-label-sm text-label-sm uppercase font-semibold">TAT This Week</span>
+<div class="w-7 h-7 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">task_alt</span>
+</div>
+</div>
+<div class="font-financial-metric-lg text-financial-metric-lg text-on-surface leading-none mb-1">6 files</div>
+<div class="font-body-sm text-body-sm text-secondary truncate font-semibold">
+          Avg TAT: 3.4 days
+        </div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-label-sm text-label-sm uppercase font-semibold">Cycle Health</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+</div>
+<div class="font-financial-metric-lg text-financial-metric-lg text-on-surface leading-none mb-1">4.2 Days</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+          Bench: 6.0 Days (-30%)
+        </div>
+</div>
+</div>
+</section>
+<!-- High Priority Action Required Today -->
+<section class="px-margin mb-space-lg">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-[18px]">emergency</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Action Required Today</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-[10px] font-bold">2 Urgent</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Urgent 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-start justify-between gap-space-sm mb-1">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Aarohi Textile Works</span>
+<span class="text-[10px] font-label-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">synthetic</span>
+</div>
+<p class="font-body-sm text-body-sm text-error mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+              Need 3-month GSTR-3B filed copy (2 days overdue)
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium flex-shrink-0">3d open</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Borrower: Rajesh Varma</span>
+<button class="px-3 py-1.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform" id="triggerFollowUpBtn">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+            Generate Follow-up Draft
+          </button>
+</div>
+</div>
+<!-- Urgent 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-start justify-between gap-space-sm mb-1">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Konark Clinic Services</span>
+<span class="text-[10px] font-label-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">synthetic</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-[#D97706]">help</span>
+              Bank statement unreadable on page 4 (re-upload request triggered)
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium flex-shrink-0">2d open</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Analyst: Amit Sen</span>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+            View OCR Log
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- New Application Action Bar & Pilot Threshold Helper -->
+<section class="px-margin mb-space-lg">
+<div class="bg-primary-container text-on-primary rounded-xl p-space-md shadow-md">
+<div class="flex items-center justify-between gap-space-sm mb-2">
+<div class="min-w-0">
+<div class="font-label-lg text-label-lg text-on-primary font-bold">Initiate SME Onboarding</div>
+<div class="font-body-sm text-body-sm text-on-primary-container truncate">Pilot Scope Underwriting Desk</div>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold flex items-center gap-1 shadow-sm flex-shrink-0 active:scale-95 transition-transform" id="openNewAppModal">
+<span class="material-symbols-outlined text-[18px]">add</span>
+          New Application
+        </button>
+</div>
+<div class="bg-primary/40 rounded-lg p-2 flex items-center gap-2 text-on-primary-container">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed flex-shrink-0">info</span>
+<p class="font-label-sm text-label-sm leading-tight text-on-primary-container">
+          Amounts ≥ ₹25 Lakh are automatically routed to standard enterprise desk. Only < ₹25L eligible for Pilot Copilot.
+        </p>
+</div>
+</div>
+</section>
+<!-- Application Pipeline Section -->
+<section class="px-margin mb-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Active Applications</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14 Total Files</span>
+</div>
+<!-- Filter Pills (Scrollable horizontally) -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs mb-space-md">
+<button class="px-3 py-1.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold flex-shrink-0 shadow-sm">
+        All (14)
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-medium flex-shrink-0 hover:bg-surface-container-high transition-colors">
+        Pending Docs (4)
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-medium flex-shrink-0 hover:bg-surface-container-high transition-colors">
+        Analyst Queue (6)
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-medium flex-shrink-0 hover:bg-surface-container-high transition-colors">
+        Credit Review (4)
+      </button>
+</div>
+<!-- Application Cards Stack -->
+<div class="space-y-space-md">
+<!-- Card 1: Aarohi Textile Works -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Aarohi Textile Works</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">synthetic</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+              App ID: <span class="font-semibold text-on-surface">#KST-2024-0891</span> • Working Capital Overdraft
+            </div>
+</div>
+<!-- Completeness Ring 75% -->
+<div class="relative w-11 h-11 flex items-center justify-center flex-shrink-0">
+<svg class="w-11 h-11 transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="#EAEDFF" stroke-width="3.5"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#006A63" stroke-dasharray="87.96" stroke-dashoffset="21.99" stroke-linecap="round" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute font-label-sm text-[10px] font-bold text-secondary">75%</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs grid grid-cols-2 gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Requested Limit</span>
+<span class="font-financial-metric-md text-financial-metric-md text-on-surface font-bold">₹18.50 Lakh</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Desk Pipeline</span>
+<span class="font-label-sm text-label-sm text-error font-semibold flex items-center gap-1 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+              Docs Pending (2 items)
+            </span>
+</div>
+</div>
+<div class="mt-space-sm bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-error">hourglass_bottom</span>
+<span>Open: <strong>3 days</strong> (Bench 6d)</span>
+</div>
+<button class="px-2.5 py-1 rounded bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center gap-1" onclick="document.getElementById('checklistDrawer').scrollIntoView({behavior: 'smooth'})">
+<span>Audit Checklist</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Konark Clinic Services -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Konark Clinic Services</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">synthetic</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+              App ID: <span class="font-semibold text-on-surface">#KST-2024-0894</span> • Equipment & Receivables
+            </div>
+</div>
+<!-- Completeness Ring 90% -->
+<div class="relative w-11 h-11 flex items-center justify-center flex-shrink-0">
+<svg class="w-11 h-11 transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="#EAEDFF" stroke-width="3.5"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#001A60" stroke-dasharray="87.96" stroke-dashoffset="8.8" stroke-linecap="round" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute font-label-sm text-[10px] font-bold text-tertiary-container">90%</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs grid grid-cols-2 gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Requested Limit</span>
+<span class="font-financial-metric-md text-financial-metric-md text-on-surface font-bold">₹22.00 Lakh</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Desk Pipeline</span>
+<span class="font-label-sm text-label-sm text-[#2563EB] font-semibold flex items-center gap-1 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-[#2563EB]"></span>
+              Analyst Verification
+            </span>
+</div>
+</div>
+<div class="mt-space-sm bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span>
+<span>Open: <strong>2 days</strong> • OCR rerun in progress</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Priority 2</span>
+</div>
+</div>
+<!-- Card 3: Vaidya Logistics Pvt Ltd -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Vaidya Logistics Pvt Ltd</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">synthetic</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+              App ID: <span class="font-semibold text-on-surface">#KST-2024-0872</span> • Fleet Term Credit
+            </div>
+</div>
+<!-- Completeness Ring 100% -->
+<div class="relative w-11 h-11 flex items-center justify-center flex-shrink-0">
+<svg class="w-11 h-11 transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="#EAEDFF" stroke-width="3.5"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#7C3AED" stroke-dasharray="87.96" stroke-dashoffset="0" stroke-linecap="round" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute material-symbols-outlined text-[16px] text-[#7C3AED]">done_all</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs grid grid-cols-2 gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Requested Limit</span>
+<span class="font-financial-metric-md text-financial-metric-md text-on-surface font-bold">₹24.80 Lakh</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Desk Pipeline</span>
+<span class="font-label-sm text-label-sm text-[#7C3AED] font-semibold flex items-center gap-1 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-[#7C3AED]"></span>
+              Credit Review
+            </span>
+</div>
+</div>
+<div class="mt-space-sm bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">person_outline</span>
+<span>Credit Mgr: Rajiv Saxena (5d open)</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-[11px] font-semibold">Pre-CAM</span>
+</div>
+</div>
+<!-- Card 4 (Edge Case): Apex Zenith Heavy Infra -->
+<div class="bg-surface-container rounded-xl p-space-md opacity-90 shadow-sm">
+<div class="flex items-start justify-between gap-space-sm mb-1">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Apex Zenith Heavy Infra</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface-variant">synthetic</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+              Heavy Plant Loan • Ref: #EX-2024-9104
+            </div>
+</div>
+<div class="font-financial-metric-md text-financial-metric-md text-on-surface font-bold">₹35.00 Lakh</div>
+</div>
+<div class="mt-space-sm p-2 rounded-lg bg-surface-container-highest text-on-surface flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant flex-shrink-0 mt-0.5">alt_route</span>
+<div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface block">Outside Pilot Scope (≥ ₹25L) - Routed to Enterprise LOS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Standard corporate appraisal committee SLA applies. RM view read-only.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Embedded Dossier View: Checklist & Copilot Follow-up Generator -->
+<section class="px-margin mb-space-lg" id="checklistDrawer">
+<div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden">
+<!-- Section Header -->
+<div class="p-space-md bg-primary-container text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-secondary-fixed text-[22px]">checklist_rtl</span>
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-primary font-bold truncate">Dossier Checklist & Copilot Follow-up</h3>
+<span class="font-label-sm text-label-sm text-on-primary-container truncate block">Aarohi Textile Works (#KST-2024-0891)</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-bold">75% Ready</span>
+</div>
+<!-- Checklist Rows -->
+<div class="p-space-md space-y-space-xs">
+<div class="text-on-surface-variant font-label-sm text-label-sm font-semibold uppercase tracking-wider mb-2">Required Document Verification</div>
+<!-- Item 1: Bank Statements -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div class="min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold block truncate">Bank Statements (12 Months)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">HDFC Current A/c • 488 transactions parsed</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-bold">VALID</span>
+</div>
+<!-- Item 2: GSTR-1 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div class="min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold block truncate">GST Returns (GSTR-1)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">FY23-24 quarterly reconciliation matched</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-bold">VALID</span>
+</div>
+<!-- Item 3: GSTR-3B Missing -->
+<div class="p-2.5 rounded-lg bg-error-container/40 flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-error text-[20px]">cancel</span>
+<div class="min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold block truncate">GSTR-3B Filed Copies</span>
+<span class="font-body-sm text-body-sm text-error">Missing 3 months • 2 days overdue</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-[10px] font-bold">OVERDUE</span>
+</div>
+<!-- Item 4: ITR-V -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div class="min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold block truncate">ITR-V (Assessment Yr 2023-24)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Validated in 4.2s • Tax liability reconciled</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-bold">VALID</span>
+</div>
+<!-- Item 5: KYC & PAN -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div class="min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold block truncate">KYC & PAN Card</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Authorized Signatory • Masked: ...4921</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-bold">VALID</span>
+</div>
+</div>
+<!-- Rich Follow-up Draft Generator Preview -->
+<div class="p-space-md bg-surface-container-high/60">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">auto_fix_high</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Copilot Draft Follow-up</span>
+</div>
+<span class="text-[11px] font-label-sm px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-semibold">AI Generated</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-3">
+<div class="mb-2 pb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Subject Line</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">
+              Action Required: Outstanding GSTR-3B for Aarohi Textile Works (App #KST-2024-0891)
+            </span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface space-y-2 leading-relaxed">
+<p>Dear Rajesh,</p>
+<p>Thank you for submitting your SME Overdraft application with Kestrel Credit Desk. To accelerate your ₹18.50 Lakh sanction review by the Credit Underwriting Team, we require your missing <strong>GSTR-3B filings for the last 3 months</strong>.</p>
+<p>Please upload the signed PDF or GSTN export acknowledgment link directly through your borrower self-serve link, or reply with attachments to this thread.</p>
+<p class="text-on-surface-variant">Best regards,<br/><span class="font-semibold text-on-surface">Priya Nair</span> | Relationship Manager, Kestrel SME</p>
+</div>
+</div>
+<!-- Human Confirmation Safeguard Note -->
+<div class="mb-3 p-2.5 rounded-lg bg-surface-container flex items-start gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5 flex-shrink-0">shield</span>
+<p class="font-label-sm text-label-sm leading-snug">
+<strong>Drafts are generated for your review.</strong> Nothing is sent until you choose Send. You retain full control over all borrower communications.
+          </p>
+</div>
+<!-- Action Row -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="py-2.5 px-3 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform" id="sendDraftBtn">
+<span class="material-symbols-outlined text-[18px]">send</span>
+            Send via WhatsApp/Email
+          </button>
+<button class="py-2.5 px-3 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container-highest transition-colors" id="saveDraftBtn">
+<span class="material-symbols-outlined text-[18px]">save</span>
+            Save Draft
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Modal: New Application Pilot Flow -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-end sm:items-center justify-center p-0 sm:p-4" id="newAppModal">
+<div class="w-full sm:max-w-md bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl p-space-lg shadow-xl flex flex-col max-h-[751px] overflow-y-auto">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">add_business</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">New SME Application</h4>
+<span class="font-label-sm text-label-sm text-secondary">Pilot Desk (< ₹25 Lakh)</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface" id="closeNewAppModal">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-space-md">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-1">Applicant Enterprise Name</label>
+<input class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="e.g. Surya Solar Fabricators" type="text"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-1">Requested Exposure Amount (₹ Lakh)</label>
+<div class="relative">
+<span class="absolute left-3 top-2 text-on-surface-variant font-label-md text-label-md">₹</span>
+<input class="w-full pl-7 pr-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary" id="loanAmountInput" placeholder="18.00" step="0.5" type="number" value="18.00"/>
+</div>
+<p class="font-label-sm text-label-sm text-error mt-1 hidden items-center gap-1" id="amountWarning">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+            Amounts ≥ ₹25 Lakh exceed Pilot scope. Will route to Enterprise Desk.
+          </p>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-1">Facility Type</label>
+<select class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary">
+<option>Working Capital Overdraft</option>
+<option>Term Loan (Equipment/Machinery)</option>
+<option>Invoice / Receivables Discounting</option>
+</select>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-1">Borrower Contact Phone (for Copilot SMS)</label>
+<input class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="+91 98200 XXXXX" type="tel"/>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">
+            Copilot will auto-generate instant document checklist upload links sent via WhatsApp and verified email.
+          </span>
+</div>
+<div class="pt-space-xs flex items-center gap-space-sm">
+<button class="flex-1 py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold shadow-md active:scale-95 transition-transform flex items-center justify-center gap-1" id="createAppBtn">
+<span class="material-symbols-outlined text-[18px]">check</span>
+            Create Pilot Application
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Container -->
+<div class="fixed top-24 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 transform -translate-y-12 opacity-0 pointer-events-none w-11/12 max-w-sm" id="toastNotification">
+<div class="bg-primary text-on-primary px-4 py-3 rounded-xl shadow-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]" id="toastIcon">check_circle</span>
+<span class="font-label-md text-label-md flex-1 text-on-primary" id="toastMessage">Follow-up dispatched successfully!</span>
+</div>
+</div>
+</div>
+<script>
+  (function initRMHub() {
+    const triggerFollowUpBtn = document.getElementById('triggerFollowUpBtn');
+    const sendDraftBtn = document.getElementById('sendDraftBtn');
+    const saveDraftBtn = document.getElementById('saveDraftBtn');
+    const checklistDrawer = document.getElementById('checklistDrawer');
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
+
+    const openNewAppModal = document.getElementById('openNewAppModal');
+    const closeNewAppModal = document.getElementById('closeNewAppModal');
+    const newAppModal = document.getElementById('newAppModal');
+    const createAppBtn = document.getElementById('createAppBtn');
+    const loanAmountInput = document.getElementById('loanAmountInput');
+    const amountWarning = document.getElementById('amountWarning');
+
+    function showToast(message, isSuccess = true) {
+      if (!toast) return;
+      toastMsg.textContent = message;
+      toastIcon.textContent = isSuccess ? 'check_circle' : 'info';
+      toast.classList.remove('-translate-y-12', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('-translate-y-12', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3200);
+    }
+
+    if (triggerFollowUpBtn && checklistDrawer) {
+      triggerFollowUpBtn.addEventListener('click', () => {
+        checklistDrawer.scrollIntoView({ behavior: 'smooth' });
+        checklistDrawer.classList.add('ring-2', 'ring-secondary');
+        setTimeout(() => {
+          checklistDrawer.classList.remove('ring-2', 'ring-secondary');
+        }, 1500);
+      });
+    }
+
+    if (sendDraftBtn) {
+      sendDraftBtn.addEventListener('click', () => {
+        sendDraftBtn.disabled = true;
+        sendDraftBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span> Dispatching...';
+        setTimeout(() => {
+          sendDraftBtn.disabled = false;
+          sendDraftBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span> Dispatched';
+          showToast('Follow-up message sent to Rajesh Varma via WhatsApp & Email');
+          setTimeout(() => {
+            sendDraftBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">send</span> Send via WhatsApp/Email';
+          }, 3000);
+        }, 900);
+      });
+    }
+
+    if (saveDraftBtn) {
+      saveDraftBtn.addEventListener('click', () => {
+        showToast('Draft template saved to RM personal library');
+      });
+    }
+
+    if (openNewAppModal && newAppModal) {
+      openNewAppModal.addEventListener('click', () => {
+        newAppModal.classList.remove('hidden');
+        newAppModal.classList.add('flex');
+      });
+    }
+
+    if (closeNewAppModal && newAppModal) {
+      closeNewAppModal.addEventListener('click', () => {
+        newAppModal.classList.add('hidden');
+        newAppModal.classList.remove('flex');
+      });
+    }
+
+    if (loanAmountInput && amountWarning) {
+      loanAmountInput.addEventListener('input', (e) => {
+        const val = parseFloat(e.target.value);
+        if (val >= 25) {
+          amountWarning.classList.remove('hidden');
+          amountWarning.classList.add('flex');
+          if (createAppBtn) {
+            createAppBtn.textContent = 'Route to Enterprise Desk';
+          }
+        } else {
+          amountWarning.classList.add('hidden');
+          amountWarning.classList.remove('flex');
+          if (createAppBtn) {
+            createAppBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Create Pilot Application';
+          }
+        }
+      });
+    }
+
+    if (createAppBtn && newAppModal) {
+      createAppBtn.addEventListener('click', () => {
+        newAppModal.classList.add('hidden');
+        newAppModal.classList.remove('flex');
+        showToast('Application created! Borrower onboarding link generated.');
+      });
+    }
+  })();
+</script></main><div class="fixed bottom-20 w-full z-40 px-margin pointer-events-none"><div class="w-full bg-surface-container-high/95 backdrop-blur-md rounded-lg p-space-xs flex items-center gap-space-xs shadow-[0_1px_8px_rgba(0,0,0,0.04)] text-on-surface-variant font-label-sm text-label-sm pointer-events-auto"><span class="material-symbols-outlined text-secondary text-[16px] flex-shrink-0">gavel</span><p class="truncate leading-snug">Copilot never approves or rejects loans. Credit decisions are made exclusively by authorized personnel.</p></div></div><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary font-semibold"><div class="flex justify-around items-center h-20 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] transition-colors text-secondary font-semibold" data-path="rm-hub" href="#"><span class="material-symbols-outlined text-[22px]">work</span><span class="font-label-sm text-[10px] leading-tight text-center">RM Hub</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="analyst-workbench" href="#"><span class="material-symbols-outlined text-[22px]">troubleshoot</span><span class="font-label-sm text-[10px] leading-tight text-center">Analyst</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="credit-decisions" href="#"><span class="material-symbols-outlined text-[22px]">verified_user</span><span class="font-label-sm text-[10px] leading-tight text-center">Credit</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="owner-insights" href="#"><span class="material-symbols-outlined text-[22px]">analytics</span><span class="font-label-sm text-[10px] leading-tight text-center">Owner</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="more-governance" href="#"><span class="material-symbols-outlined text-[22px]">more_horiz</span><span class="font-label-sm text-[10px] leading-tight text-center">More</span></a></div></nav></body></html>

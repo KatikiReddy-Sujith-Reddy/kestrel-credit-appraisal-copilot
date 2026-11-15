@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-container": "#99efe5", "inverse-primary": "#b9c6ea", "tertiary-fixed": "#dce1ff", "secondary-fixed": "#9cf2e8", "tertiary-container": "#001a60", "on-error": "#ffffff", "on-primary-container": "#7c89aa", "on-secondary-container": "#006f67", "surface-container-low": "#f2f3ff", "on-primary-fixed-variant": "#3a4664", "surface-variant": "#dae2fd", "surface-container": "#eaedff", "on-secondary-fixed-variant": "#00504a", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#0039b5", "primary": "#000a24", "on-tertiary-container": "#5d80ff", "on-surface-variant": "#45464d", "background": "#faf8ff", "on-surface": "#131b2e", "on-background": "#131b2e", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#001551", "outline-variant": "#c5c6ce", "surface-tint": "#525e7d", "tertiary": "#00072c", "error-container": "#ffdad6", "surface-container-high": "#e2e7ff", "secondary": "#006a63", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "primary-fixed": "#d9e2ff", "inverse-on-surface": "#eef0ff", "outline": "#75777e", "primary-container": "#14213d", "primary-fixed-dim": "#b9c6ea", "on-secondary-fixed": "#00201d", "surface-dim": "#d2d9f4", "surface-container-highest": "#dae2fd", "inverse-surface": "#283044", "on-primary-fixed": "#0d1b36", "secondary-fixed-dim": "#80d5cb", "tertiary-fixed-dim": "#b7c4ff", "surface-bright": "#faf8ff", "surface": "#faf8ff", "on-error-container": "#93000a", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1rem", "space-xl": "1.5rem", "margin": "1rem", "margin-tablet": "1.5rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-md": "0.75rem", "gutter": "1rem", "gutter-tablet": "1rem" }, fontFamily: { "headline-sm": ["Inter"], "headline-md": ["Inter"], "display-lg": ["Inter"], "label-lg": ["Inter"], "display-lg-mobile": ["Inter"], "body-lg": ["Inter"], "financial-metric-md": ["Inter"], "headline-lg": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"], "financial-metric-lg": ["Inter"], "financial-table-cell": ["Inter"] }, fontSize: { "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "financial-metric-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "financial-metric-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "financial-table-cell": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "500" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-primary-container text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.08)]"><div class="w-full bg-[#FEF3C7] text-[#92400E] px-margin py-0.5 flex items-center justify-center gap-1.5 font-label-sm text-label-sm uppercase tracking-wider"><span class="material-symbols-outlined text-[12px] leading-none text-[#F59E0B]">warning</span><span class="truncate">SIMULATED DATA • PILOT SCOPE (< ₹25 L) • IST</span></div><div class="h-20 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="Kestrel Enterprise Brand Mark" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrCkEyyxZg7P_0qsk21kmacoVIY49JMZsRpI7Qv5oTa20hj6eoHgi9KsJ6PgEGj5NNo1_3T8TclvVl30666AacM7kWLzXwnkEbDDUer5WDB2M8su0yJgAUPDZM0ZglEbpr_3YSF-e5mjpc3dp2ENvIOerOAoR0p81JM5muHiZdjG8OS-SUuPYtwOnHNzOPkJa82W1FCMUL-sKgwuRyiN-1-i8oJTNFLYDVcq1s0jJZL2"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm tracking-tight text-on-primary font-bold leading-tight">KESTREL</span><span class="font-label-sm text-label-sm text-on-primary-container leading-none uppercase">Credit Decisions</span></div><span class="font-label-md text-label-md text-on-primary-container truncate leading-none">Credit Copilot</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button class="h-7 px-space-xs rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center gap-1 min-h-[44px] min-w-[44px] justify-center"><span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span><span>Analyst</span><span class="material-symbols-outlined text-[14px]">expand_more</span></button><button aria-label="Search cases" class="w-11 h-11 flex items-center justify-center text-on-primary hover:text-on-primary-container rounded-full"><span class="material-symbols-outlined text-[20px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center text-on-primary hover:text-on-primary-container rounded-full relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-4 h-4 bg-error text-on-error rounded-full font-label-sm text-[10px] flex items-center justify-center font-bold">3</span></button><div class="flex items-center justify-center ml-0.5"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8_DNxZkg48IdDl2a48zW1FENIlX6deThfUCsb8NYNNWIVSAv1B6nsBR0HdoQwbyOBXGu5nefedSrs1cvBqlaSl8Tl4wSnZjtzEBzWnrikpu8RGovE3fc6vQfCaJa9hBiLkhn1ooQevl7x7m6H_miqavnS2aXgi95V4n1N75wJvVh5CeD41QUMc737ZVDzldu_uj0sB-KTzddRvD-a_dcCErEPmUwpe2dU8o8zYi4"/></div></div></div></header><main class="flex flex-col relative w-full pt-20 pb-36 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Persistent Credit Governance Notice -->
+<div class="px-margin pt-space-xs pb-space-sm bg-primary-container text-on-primary">
+<div class="flex items-start gap-space-xs p-space-xs rounded-xl bg-surface-container-highest/10 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary-container mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary-container font-semibold tracking-wide uppercase">Institutional Underwriting Protocol</span>
+<p class="font-body-sm text-body-sm text-on-primary-container leading-tight mt-0.5">
+          SIMULATED DATA • LOAN SANCTION IS A HUMAN ACT. Copilot does not approve or reject loans. All decisions subject to Credit Delegation Matrix.
+        </p>
+</div>
+</div>
+</div>
+<div class="flex flex-col px-margin gap-space-md mt-space-sm">
+<!-- Credit Queue KPIs Ribbon -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="p-space-sm rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Queue Pending</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex items-baseline gap-1 mt-space-xs">
+<span class="font-financial-metric-lg text-financial-metric-lg text-on-surface">2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">files assigned</span>
+</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Kavitha Rao (CM Level-2)</div>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Avg Turnaround</span>
+<span class="material-symbols-outlined text-[15px] text-secondary">timer</span>
+</div>
+<div class="flex items-baseline gap-1 mt-space-xs">
+<span class="font-financial-metric-lg text-financial-metric-lg text-on-surface">1.1d</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">SLA: 2.0d</span>
+</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">1 returned this week</div>
+</div>
+</div>
+<!-- Active Appraisal Dossier Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-md relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="inline-flex items-center gap-1.5 px-space-xs py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+<span>CASE UNDER REVIEW</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">App #KST-2024-0891</span>
+</div>
+<div class="flex items-start gap-space-sm my-space-xs">
+<img class="w-14 h-14 rounded-lg object-cover flex-shrink-0 bg-surface-container" data-alt="Textile weaving factory floor with automated power looms and folded organic cotton fabrics under natural ambient workshop sunlight in Surat Gujarat, captured in clean documentary corporate architectural style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-cDaVh4ggvxGk2N_e50lQclBF_l1Z3ZYbhbA_j9Aees4CorjLxq2PTyHGaD0AAO4DFn69O6k8QQia0C3VTzU3KE85pKfo_V2X3dnMgIuZ2SFLrh_wwiM1PlUnlJhKyXeMFBJWYSXkFIMt6IqanTcURSpqzty50c0SZGOFyTY1bvFbD7cdCKwcDOlZs5KkiTmQClWVQlMXB7CFI725NhvffgY16AbQ0PAQ86a5rUo"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Aarohi Textile Works</h2>
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0" title="Synthetic Pilot Entity">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Surat Powerloom Cluster • GSTIN: 24AAACA0000A1Z5</span>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-label-sm text-[11px] px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface font-medium">Promoter: Rajesh Patel</span>
+<span class="font-label-sm text-[11px] px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-semibold">CIBIL 748</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs p-space-xs rounded-lg bg-surface-container-low mt-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Appraised Limit</span>
+<span class="font-financial-metric-md text-financial-metric-md text-on-surface font-bold">₹18,50,000</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant block">Working Capital (SME-WC-P)</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Analyst Originator</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+            Arjun Menon
+            <span class="material-symbols-outlined text-[13px] text-secondary">task_alt</span>
+</span>
+<span class="font-body-sm text-[10px] text-secondary font-medium">Sign-off: Today, 14:22 IST</span>
+</div>
+</div>
+<!-- Borrower & PAN Details Banner -->
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mt-space-xs pt-space-xs">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">badge</span>
+          Masked PAN: A****4921K
+        </span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant text-[10px]">Open Material Flags: 1</span>
+</div>
+</div>
+<!-- Segmented Navigation Tabs -->
+<div class="flex rounded-lg bg-surface-container-high p-1 text-on-surface-variant shadow-inner" id="decisionTabsContainer">
+<button class="flex-1 py-1.5 px-2 rounded-md font-label-md text-label-md font-semibold text-center transition-all bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center gap-1" id="tabBtn-flags" onclick="switchTab('flags')">
+<span>Risk Flags</span>
+<span class="w-4 h-4 rounded-full bg-error text-on-error text-[10px] flex items-center justify-center font-bold">1</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-md font-label-md text-label-md font-medium text-center text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-1" id="tabBtn-cam" onclick="switchTab('cam')">
+<span>CAM Review</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-md font-label-md text-label-md font-medium text-center text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-1" id="tabBtn-audit" onclick="switchTab('audit')">
+<span>Audit Trail</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-md font-label-md text-label-md font-medium text-center text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-1" id="tabBtn-decision" onclick="switchTab('decision')">
+<span>LOS Action</span>
+</button>
+</div>
+<!-- TAB 1: RISK FLAGS -->
+<div class="flex flex-col gap-space-sm" id="tabContent-flags">
+<!-- Mandatory Acknowledgment Banner for Material Risk -->
+<div class="p-space-sm rounded-xl bg-error-container text-on-error-container shadow-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-error flex-shrink-0 mt-0.5">priority_high</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-error-container">Material Flag Gating Active</span>
+<p class="font-body-sm text-body-sm text-on-error-container leading-tight mt-0.5">
+            Credit Manager acknowledgment is mandatory before recording review completion or transmitting to LOS.
+          </p>
+</div>
+</div>
+<!-- Flag 1: Material (Red) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+            MATERIAL RISK FLAG
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Source: GST vs Banking Spread</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1">
+          Bank Credits exceed GST Turnover by 11.2%
+        </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Q3 Bank credit summation is ₹1,42,80,000 against reported GSTR-3B taxable turnover of ₹1,28,40,000 (discrepancy: ₹14.40 Lakh).
+        </p>
+<!-- Analyst Resolution Box -->
+<div class="mt-space-sm p-space-xs rounded-lg bg-surface-container-low text-on-surface">
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">rate_review</span>
+<span>Analyst Finding & Evidence (Arjun Menon):</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            “Diwali seasonal trade festival cash sales were bundled and deposited across Nov 1-14. Reconciled against physical cash book and GST-verified tax invoices. Zero circular transfers observed across 3 related entities.”
+          </p>
+<div class="mt-2 flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-on-surface-variant">Citation: Annexure 4.2 (Cash Ledger Extract)</span>
+<button class="font-label-sm text-label-sm text-secondary font-semibold hover:underline" onclick="switchTab('cam')">Inspect Proof</button>
+</div>
+</div>
+<!-- Credit Manager Acknowledgment Input -->
+<div class="mt-space-sm pt-space-xs">
+<label class="flex items-start gap-2 cursor-pointer">
+<input class="mt-1 h-4 w-4 rounded text-secondary focus:ring-secondary" id="cmAcknowledgeCheck" onchange="toggleCMAck()" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">
+              I have scrutinized the GST-Bank turnover reconciliation and accept the analyst explanation.
+            </span>
+</label>
+</div>
+</div>
+<!-- Flag 2: Amber Watch -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+            WATCH ITEM
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Axis Bank A/C ...9941</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1">
+          Single Inward Technical Debit Return (₹12,400)
+        </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Return reason code 03 (Clearing house network timeout on June 18). Settled on immediate next business day. 0 financial bounce events across 12 rolling months.
+        </p>
+</div>
+<!-- Flag 3: Info Blue -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            FINANCIAL OBSERVATION
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Operating Cycle Benchmark</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1">
+          Working Capital Velocity: 48 Days
+        </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Entity operates with superior turnover compared to Surat weaving sector median of 55 days. Receivable collection period steady at 38 days.
+        </p>
+</div>
+</div>
+<!-- TAB 2: CAM REVIEW -->
+<div class="hidden flex flex-col gap-space-sm" id="tabContent-cam">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Synthesis Memo (CAM-KST-0891)</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Draft v1.4</span>
+</div>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<div class="p-space-xs rounded-lg bg-surface-container-low flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Recommended Sanction Facility:</span>
+<span class="font-financial-metric-md text-financial-metric-md text-on-surface font-bold">₹18,50,000</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Calculated DSCR (FY24):</span>
+<span class="font-financial-metric-md text-financial-metric-md text-secondary font-bold">1.82x</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Security Cover / Primary:</span>
+<span class="font-financial-metric-md text-financial-metric-md text-on-surface font-semibold">Hypothecation of Stock & Book Debts</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Personal Guarantee:</span>
+<span class="font-financial-metric-md text-financial-metric-md text-on-surface font-semibold">Rajesh Patel (Net Worth ₹68 L)</span>
+</div>
+</div>
+<!-- Inline Visual Ratio Chart -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Solvency & Coverage Stress Test</span>
+<div class="flex items-end justify-between h-20 pt-2 px-2">
+<div class="flex flex-col items-center gap-1 w-1/3">
+<span class="font-label-sm text-[10px] text-on-surface-variant">1.35x</span>
+<div class="w-8 bg-surface-variant rounded-t" style="height: 38px;"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Bank Hurdle</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-1/3">
+<span class="font-label-sm text-[10px] text-secondary font-bold">1.82x</span>
+<div class="w-8 bg-secondary rounded-t" style="height: 58px;"></div>
+<span class="font-label-sm text-[10px] text-secondary font-semibold">Current</span>
+</div>
+<div class="flex flex-col items-center gap-1 w-1/3">
+<span class="font-label-sm text-[10px] text-on-surface font-bold">1.54x</span>
+<div class="w-8 bg-primary-container rounded-t" style="height: 48px;"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Stressed (+150bps)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 3: VERIFICATION AUDIT & CITATIONS -->
+<div class="hidden flex flex-col gap-space-sm" id="tabContent-audit">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-space-xs">Verification Timeline & Audit Signatures</h3>
+<div class="relative pl-5 flex flex-col gap-space-md">
+<!-- Step 1 -->
+<div class="relative flex flex-col">
+<span class="absolute -left-5 top-0 w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Today 10:14 IST • Automated Ingestion</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Document OCR Verified</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">98.4% of tax schedule fields automatically extracted and matched to GST sandbox records.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col">
+<span class="absolute -left-5 top-0 w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Today 12:45 IST • Analyst Investigation</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Discrepancy #01 Reconciled</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Turnover mismatch mapped to cash sales diary; verified deposit challans appended.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative flex flex-col">
+<span class="absolute -left-5 top-0 w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Today 14:22 IST • Analyst Workbench</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Arjun Menon Sign-Off Completed</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dossier packaged and submitted to CM queue with all 14 checklist validations fulfilled.</p>
+</div>
+<!-- Step 4 Current -->
+<div class="relative flex flex-col">
+<span class="absolute -left-5 top-0 w-3 h-3 rounded-full bg-primary ring-2 ring-primary-container"></span>
+<span class="font-label-sm text-[11px] text-primary font-bold">Now Active • Credit Manager Desk</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Kavitha Rao Review Pending Decision</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Awaiting CM acknowledgement on material gap and sanction recommendation sign-off.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 4: DECISION & LOS MEMO INTERFACE -->
+<div class="hidden flex flex-col gap-space-sm" id="tabContent-decision">
+<!-- Threaded Conversation Box with Analyst -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">forum</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Threaded Analyst Communication</h3>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low mb-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-[11px]">
+<span class="font-semibold text-on-surface">Arjun Menon (Analyst)</span>
+<span>14:23 IST</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-1">
+            "Kavitha Ma'am, promoter confirmed factory expansion loan from HDFC will be closed by March end. Please check Covenant #3 on the debt-equity restriction."
+          </p>
+</div>
+<div class="flex items-center gap-space-xs">
+<input class="flex-1 bg-surface-container-lowest rounded-lg p-2 font-body-sm text-body-sm text-on-surface placeholder:text-outline-variant shadow-inner focus:outline-none focus:ring-1 focus:ring-secondary" id="analystReplyInput" placeholder="Add reply note to @Arjun Menon..." type="text"/>
+<button class="p-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-colors flex items-center justify-center" onclick="sendAnalystReply()">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+<span class="font-label-sm text-[11px] text-secondary font-semibold mt-1 hidden" id="replyConfirmation">Reply recorded in underwriting dossier.</span>
+</div>
+<!-- Action Decision Cards -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Credit Manager Action Panel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Select review disposition. All actions produce a permanent audit record.</p>
+</div>
+<!-- Action A: Return for Correction -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">assignment_return</span>
+              Option A: Return to Analyst
+            </span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">Requires defect category</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sends dossier back to Arjun Menon for document remediation or updated collateral appraisal.</p>
+<button class="w-full py-2 px-3 rounded-lg bg-error-container text-on-error-container font-label-md text-label-md font-bold hover:opacity-90 transition-opacity" onclick="openReturnModal()">
+            Return for Correction
+          </button>
+</div>
+<!-- Action B: Complete Review & Transmit -->
+<div class="p-space-sm rounded-xl bg-primary-container text-on-primary flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-secondary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              Option B: Complete Review & Generate LOS Memo
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+            Affirms credit assessment completeness, acknowledges flagged variances, and drafts the executive recommendation for delegated signatories.
+          </p>
+<button class="w-full py-2.5 px-3 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold hover:bg-secondary/90 shadow-md transition-all flex items-center justify-center gap-1.5" onclick="openCompleteDialog()">
+<span class="material-symbols-outlined text-[18px]">post_add</span>
+<span>Record Review & Draft LOS Memo</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- RETURN MODAL -->
+<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-margin" id="returnModal">
+<div class="bg-surface-container-lowest rounded-xl p-space-md w-full max-w-sm flex flex-col gap-space-sm shadow-xl">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Return File for Remediation</h4>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeReturnModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Mandatory Defect Classification</label>
+<select class="p-2 rounded-lg bg-surface-container font-body-sm text-body-sm text-on-surface focus:outline-none">
+<option>Insufficient Bank Credit Reconciliation</option>
+<option>Missing Promoter Net-worth Certificate</option>
+<option>Inadequate Collateral Site Inspection Notes</option>
+<option>GST GSTR-2A Inward Match Discrepancy</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Remediation Directive for Analyst</label>
+<textarea class="p-2 rounded-lg bg-surface-container font-body-sm text-body-sm text-on-surface placeholder:text-outline-variant focus:outline-none" placeholder="Specify required clarification..." rows="3"></textarea>
+</div>
+<div class="flex gap-space-xs mt-space-xs">
+<button class="flex-1 py-2 rounded-lg bg-surface-container font-label-md text-label-md text-on-surface font-semibold" onclick="closeReturnModal()">Cancel</button>
+<button class="flex-1 py-2 rounded-lg bg-error text-on-error font-label-md text-label-md font-bold" onclick="submitReturnAction()">Return File</button>
+</div>
+</div>
+</div>
+<!-- COMPLETE REVIEW DIALOG (EXPLICIT SANCTION DISCLAIMER) -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-margin" id="completeModal">
+<div class="bg-surface-container-lowest rounded-xl p-space-md w-full max-w-sm flex flex-col gap-space-sm shadow-xl max-h-[751px] overflow-y-auto">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Sign-off Review & LOS Memo</h4>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeCompleteDialog()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Explicit Consequence Warning -->
+<div class="p-space-xs rounded-lg bg-surface-container-low text-on-surface flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-[12px] leading-snug text-on-surface-variant">
+<span class="font-bold text-on-surface">Consequence Notice:</span> Recording review complete does not sanction the loan. Sanctions are exclusively recorded in the Loan Origination System (LOS) by authorized signatories under delegated lending authority.
+        </p>
+</div>
+<!-- Form Inputs for LOS Memo -->
+<div class="flex flex-col gap-space-xs">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-0.5">Enterprise LOS Reference</label>
+<input class="w-full p-2 rounded-lg bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none" id="losRefInput" type="text" value="LOS-SME-2024-9912"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-0.5">Credit Recommendation</label>
+<select class="w-full p-2 rounded-lg bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none" id="recommendationSelect">
+<option selected="">Recommend Sanction ₹18.50 L @ 12.50% p.a.</option>
+<option>Recommend Conditional Sanction (Stock Audit Pre-disbursal)</option>
+<option>Recommend Decline (Policy Criteria Unmet)</option>
+</select>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-0.5">Covenants & Pre-Disbursement Stipulations</label>
+<textarea class="w-full p-2 rounded-lg bg-surface-container font-body-sm text-body-sm text-on-surface focus:outline-none" id="covenantsInput" rows="2">1. Quarterly CA-certified stock and debtor statements within 30 days of quarter close.
+2. Routing of 80%+ operational collections through designated primary account.</textarea>
+</div>
+<div class="p-space-xs rounded bg-surface-container-high text-on-surface-variant font-label-sm text-[11px] flex items-center justify-between">
+<span>Digital Signature: Kavitha Rao</span>
+<span class="text-secondary font-semibold">CREDIT_KEY_OK</span>
+</div>
+</div>
+<div class="flex gap-space-xs mt-space-xs">
+<button class="flex-1 py-2 rounded-lg bg-surface-container font-label-md text-label-md text-on-surface font-semibold" onclick="closeCompleteDialog()">Edit Memo</button>
+<button class="flex-1 py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold hover:bg-primary transition-all flex items-center justify-center gap-1" onclick="transmitToLOS()">
+<span>Transmit to LOS</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Toast Notification Overlay -->
+<div class="fixed top-24 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm p-space-sm rounded-xl bg-surface-container-highest shadow-xl text-on-surface transition-all duration-300 opacity-0 pointer-events-none transform -translate-y-4" id="toastSuccess">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">Review Transmitted to LOS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Ref #LOS-88912-AUDIT recorded successfully.</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchTab(tabName) {
+    const tabs = ['flags', 'cam', 'audit', 'decision'];
+    tabs.forEach(t => {
+      const content = document.getElementById('tabContent-' + t);
+      const btn = document.getElementById('tabBtn-' + t);
+      if (t === tabName) {
+        content.classList.remove('hidden');
+        btn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        btn.classList.remove('text-on-surface-variant');
+      } else {
+        content.classList.add('hidden');
+        btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        btn.classList.add('text-on-surface-variant');
+      }
+    });
+  }
+
+  function toggleCMAck() {
+    const check = document.getElementById('cmAcknowledgeCheck');
+    if (check.checked) {
+      showToastNotice("Material Risk Flag acknowledged by Credit Manager.");
+    }
+  }
+
+  function sendAnalystReply() {
+    const input = document.getElementById('analystReplyInput');
+    const conf = document.getElementById('replyConfirmation');
+    if (input.value.trim().length > 0) {
+      conf.classList.remove('hidden');
+      input.value = '';
+      setTimeout(() => {
+        conf.classList.add('hidden');
+      }, 3500);
+    }
+  }
+
+  function openReturnModal() {
+    document.getElementById('returnModal').classList.remove('hidden');
+  }
+
+  function closeReturnModal() {
+    document.getElementById('returnModal').classList.add('hidden');
+  }
+
+  function submitReturnAction() {
+    closeReturnModal();
+    showToastNotice("File returned to Analyst Arjun Menon with correction directives.");
+  }
+
+  function openCompleteDialog() {
+    const check = document.getElementById('cmAcknowledgeCheck');
+    if (check && !check.checked) {
+      switchTab('flags');
+      alert("Institutional Policy Mandate: Please acknowledge the Material Risk Flag regarding GST turnover discrepancy before recording review completion.");
+      return;
+    }
+    document.getElementById('completeModal').classList.remove('hidden');
+  }
+
+  function closeCompleteDialog() {
+    document.getElementById('completeModal').classList.add('hidden');
+  }
+
+  function transmitToLOS() {
+    closeCompleteDialog();
+    const toast = document.getElementById('toastSuccess');
+    toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 4500);
+  }
+
+  function showToastNotice(msg) {
+    const toast = document.getElementById('toastSuccess');
+    const textSpan = toast.querySelector('.text-body-sm');
+    if (textSpan) textSpan.innerText = msg;
+    toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 3200);
+  }
+</script></main><div class="fixed bottom-20 w-full z-40 px-margin pointer-events-none"><div class="w-full bg-surface-container-high/95 backdrop-blur-md rounded-lg p-space-xs flex items-center gap-space-xs shadow-[0_1px_8px_rgba(0,0,0,0.04)] text-on-surface-variant font-label-sm text-label-sm pointer-events-auto"><span class="material-symbols-outlined text-secondary text-[16px] flex-shrink-0">gavel</span><p class="truncate leading-snug">Copilot never approves or rejects loans. Credit decisions are made exclusively by authorized personnel.</p></div></div><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary font-semibold"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="rm-hub" href="#"><span class="material-symbols-outlined text-[22px]">work</span><span class="font-label-sm text-[10px] leading-tight text-center">RM Hub</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="analyst-workbench" href="#"><span class="material-symbols-outlined text-[22px]">troubleshoot</span><span class="font-label-sm text-[10px] leading-tight text-center">Analyst</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] transition-colors text-secondary font-semibold" data-path="credit-decisions" href="#"><span class="material-symbols-outlined text-[22px]">verified_user</span><span class="font-label-sm text-[10px] leading-tight text-center">Credit</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="owner-insights" href="#"><span class="material-symbols-outlined text-[22px]">analytics</span><span class="font-label-sm text-[10px] leading-tight text-center">Owner</span></a><a class="flex flex-col items-center justify-center gap-1 w-14 h-14 min-w-[44px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="more-governance" href="#"><span class="material-symbols-outlined text-[22px]">more_horiz</span><span class="font-label-sm text-[10px] leading-tight text-center">More</span></a></div></nav></body></html>
