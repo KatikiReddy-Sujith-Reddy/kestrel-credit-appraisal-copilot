@@ -70,11 +70,21 @@ class NodeSqliteAdapter implements KestrelDatabase {
 
 export function getDatabase(): KestrelDatabase {
   if (!dbInstance) {
-    if (!fs.existsSync(config.DATA_DIR)) {
-      fs.mkdirSync(config.DATA_DIR, { recursive: true });
+    try {
+      if (!fs.existsSync(config.DATA_DIR)) {
+        fs.mkdirSync(config.DATA_DIR, { recursive: true });
+      }
+      const dbPath = path.join(config.DATA_DIR, 'kestrel.db');
+      dbInstance = new NodeSqliteAdapter(dbPath);
+    } catch (err) {
+      console.warn('[Kestrel DB] File-backed SQLite failed, falling back to in-memory database:', err);
+      try {
+        dbInstance = new NodeSqliteAdapter(':memory:');
+      } catch (memErr) {
+        console.error('[Kestrel DB] In-memory database failed:', memErr);
+        throw memErr;
+      }
     }
-    const dbPath = path.join(config.DATA_DIR, 'kestrel.db');
-    dbInstance = new NodeSqliteAdapter(dbPath);
   }
   return dbInstance;
 }
