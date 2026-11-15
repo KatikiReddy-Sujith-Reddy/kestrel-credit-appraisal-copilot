@@ -9,6 +9,9 @@
     "apps/web",
     "apps/api"
   ],
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.68.3"
+  },
   "scripts": {
     "dev:api": "npm --workspace=apps/api run dev",
     "dev:web": "npm --workspace=apps/web run dev",
