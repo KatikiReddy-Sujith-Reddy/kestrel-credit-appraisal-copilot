@@ -42,7 +42,10 @@ export async function runSeed(): Promise<void> {
     fs.mkdirSync(docsDir, { recursive: true });
   }
 
-  // 1. Roles
+  // Wrap all insertions in an atomic transaction for orders-of-magnitude faster initialization
+  db.exec('BEGIN TRANSACTION;');
+  try {
+    // 1. Roles
   const roles = [
     { id: 'role_rm', name: 'rm', description: 'Relationship Manager: pipelines, checklist, uploads, follow-ups' },
     { id: 'role_analyst', name: 'analyst', description: 'Credit Analyst: extraction verification, reconciliation, ratios, CAM generation' },
@@ -677,6 +680,16 @@ export async function runSeed(): Promise<void> {
       timestamp: new Date().toISOString()
     }
   }, db);
+
+    db.exec('COMMIT;');
+  } catch (seedErr) {
+    try {
+      db.exec('ROLLBACK;');
+    } catch {
+      // rollback error ignored
+    }
+    throw seedErr;
+  }
 
   console.log('[Kestrel Seed] Database successfully seeded with:');
   console.log(`- 42 synthetic loan applications (36 in pilot <= $250K, 6 outside pilot > $250K)`);

@@ -99,6 +99,11 @@ export default async function handler(req: any, res: any) {
     res.statusCode = response.statusCode;
     for (const [key, value] of Object.entries(response.headers)) {
       if (value !== undefined) {
+        const lowerKey = key.toLowerCase();
+        // Serverless runtimes MUST NOT set connection: keep-alive or transfer-encoding
+        if (lowerKey === 'connection' || lowerKey === 'transfer-encoding') {
+          continue;
+        }
         res.setHeader(key, value);
       }
     }
