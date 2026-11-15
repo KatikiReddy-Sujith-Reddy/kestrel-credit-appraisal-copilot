@@ -1,6 +1,6 @@
 # Kestrel Credit Appraisal Copilot
 
-A functional, live prototype for SME working-capital credit underwriting appraisal (pilot scope under ₹25 Lakh).
+A functional, live prototype for SME working-capital credit underwriting appraisal (pilot scope under $250,000 USD).
 
 > **Important Institutional Governance Disclaimer:**
 > **Copilot advises. Humans decide.** The system never approves, rejects, or sanctions a loan. Credit decisions are made exclusively by authorized human underwriters and formal sanction occurs in the production Loan Origination System (LOS).
