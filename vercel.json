@@ -4,6 +4,9 @@
   "installCommand": "npm install --include=optional",
   "buildCommand": "npm run build:web",
   "outputDirectory": "apps/web/dist",
+  "env": {
+    "NODE_OPTIONS": "--experimental-sqlite"
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",

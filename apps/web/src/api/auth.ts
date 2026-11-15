@@ -32,15 +32,28 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutM
   try {
     return await fetch(url, {
       ...options,
+      credentials: 'include',
       signal: controller.signal,
     });
   } catch (err: any) {
     if (err.name === 'AbortError') {
-      throw new Error(`Request timed out after ${timeoutMs / 1000}s. Please try again.`);
+      throw new Error(`Request timed out after ${timeoutMs / 1000}s. Please check network/server status.`);
     }
     throw err;
   } finally {
     clearTimeout(timer);
+  }
+}
+
+async function extractErrorMessage(res: Response, defaultMsg: string): Promise<string> {
+  try {
+    const data = await res.json();
+    if (data?.error?.message === 'Protected deployment' || data?.message?.includes('Protected by Vercel Authentication')) {
+      return 'Vercel Deployment Protection is active. Please turn off "Vercel Authentication" in your Vercel Project Settings > Deployment Protection.';
+    }
+    return data?.message || (typeof data?.error === 'string' ? data.error : defaultMsg);
+  } catch {
+    return `Server HTTP ${res.status}: ${res.statusText || defaultMsg}`;
   }
 }
 
@@ -51,8 +64,8 @@ export async function apiSignIn(identifier: string, password: string): Promise<S
     body: JSON.stringify({ identifier, password }),
   });
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: 'Sign in failed' }));
-    throw new Error(err.message || 'Invalid credentials');
+    const errorMsg = await extractErrorMessage(res, 'Invalid credentials');
+    throw new Error(errorMsg);
   }
   return res.json();
 }
@@ -64,8 +77,8 @@ export async function apiOwnerSignIn(hardwareToken: string, email: string): Prom
     body: JSON.stringify({ hardwareToken, email }),
   });
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: 'Owner sign in failed' }));
-    throw new Error(err.message || 'Owner authentication failed');
+    const errorMsg = await extractErrorMessage(res, 'Owner authentication failed');
+    throw new Error(errorMsg);
   }
   return res.json();
 }
@@ -77,8 +90,8 @@ export async function apiVerifyMfa(challengeId: string, mfaCode: string, request
     body: JSON.stringify({ challengeId, mfaCode, requestedRole }),
   });
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: 'MFA verification failed' }));
-    throw new Error(err.message || 'Invalid MFA code');
+    const errorMsg = await extractErrorMessage(res, 'Invalid MFA code');
+    throw new Error(errorMsg);
   }
   const data = await res.json();
   localStorage.setItem('kestrel_token', data.token);
@@ -97,8 +110,8 @@ export async function apiSelectRole(role: string): Promise<{ token: string; user
     body: JSON.stringify({ role }),
   });
   if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: 'Role change failed' }));
-    throw new Error(err.message || 'Forbidden role');
+    const errorMsg = await extractErrorMessage(res, 'Forbidden role');
+    throw new Error(errorMsg);
   }
   const data = await res.json();
   localStorage.setItem('kestrel_token', data.token);
@@ -112,7 +125,7 @@ export async function apiGetMe(): Promise<{ user: UserProfile }> {
     headers: {
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
-  }, 8000); // 8 second timeout for initial session check
+  }, 8000);
   if (!res.ok) {
     throw new Error('Unauthenticated');
   }

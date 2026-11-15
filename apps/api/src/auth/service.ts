@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import { getDatabase } from '../db/connection.js';
 import { recordAuditEvent } from '../db/audit.js';
-import { signToken, verifyToken, UserTokenPayload } from './jwt.js';
+import { signToken, verifyToken, signMfaChallenge, verifyMfaChallenge, UserTokenPayload } from './jwt.js';
 
 export const SIMULATED_MFA_CODE = '742918';
 
@@ -86,10 +86,9 @@ export class AuthService {
     `).all(user.id) as { name: string }[];
     const assignedRoles = rolesRows.map(r => r.name);
 
-    // Create simulated MFA challenge
-    const challengeId = `mfa_${crypto.randomBytes(16).toString('hex')}`;
-    const challenge: MfaChallenge = {
-      challengeId,
+    // Create stateless cryptographically-signed MFA challenge (works reliably across serverless instances)
+    const challengePayload: MfaChallenge = {
+      challengeId: '',
       userId: user.id,
       username: user.username,
       email: user.email,
@@ -98,7 +97,9 @@ export class AuthService {
       simulatedMfaCode: SIMULATED_MFA_CODE,
       expiresAt: Date.now() + 5 * 60 * 1000, // 5 min challenge expiry
     };
-    activeChallenges.set(challengeId, challenge);
+    const challengeId = signMfaChallenge(challengePayload);
+    challengePayload.challengeId = challengeId;
+    activeChallenges.set(challengeId, challengePayload);
 
     return {
       requiresMfa: true,
@@ -147,9 +148,8 @@ export class AuthService {
       throw new Error('INVALID_CREDENTIALS: Valid FIDO2 hardware token required for Owner sign-in.');
     }
 
-    const challengeId = `mfa_owner_${crypto.randomBytes(16).toString('hex')}`;
-    const challenge: MfaChallenge = {
-      challengeId,
+    const challengePayload: MfaChallenge = {
+      challengeId: '',
       userId: user.id,
       username: user.username,
       email: user.email,
@@ -158,7 +158,9 @@ export class AuthService {
       simulatedMfaCode: SIMULATED_MFA_CODE,
       expiresAt: Date.now() + 5 * 60 * 1000,
     };
-    activeChallenges.set(challengeId, challenge);
+    const challengeId = signMfaChallenge(challengePayload);
+    challengePayload.challengeId = challengeId;
+    activeChallenges.set(challengeId, challengePayload);
 
     return {
       requiresMfa: true,
@@ -178,7 +180,16 @@ export class AuthService {
     token: string;
     user: UserTokenPayload;
   } {
-    const challenge = activeChallenges.get(challengeId);
+    let challenge = activeChallenges.get(challengeId);
+    if (!challenge) {
+      const verified = verifyMfaChallenge(challengeId);
+      if (verified) {
+        challenge = {
+          ...verified,
+          challengeId,
+        };
+      }
+    }
     if (!challenge || Date.now() > challenge.expiresAt) {
       throw new Error('MFA_EXPIRED: The MFA session has expired. Please sign in again.');
     }
