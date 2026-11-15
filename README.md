@@ -33,7 +33,7 @@ A functional, live prototype for SME working-capital credit underwriting apprais
 │   └── TEST_REPORT.md        # Verification test results & coverage
 ├── apps/
 │   ├── web/                  # React + Vite + TypeScript + Tailwind + React Router
-│   └── api/                  # Fastify + TypeScript + Zod + better-sqlite3 + Vitest
+│   └── api/                  # Fastify + TypeScript + Zod + SQLite (node:sqlite) + Vitest
 └── data/                     # SQLite database file and generated synthetic documents
 ```
 

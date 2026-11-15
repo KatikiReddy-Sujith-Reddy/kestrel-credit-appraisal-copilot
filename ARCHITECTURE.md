@@ -14,7 +14,7 @@ Frontend: React, TypeScript, Vite, React Router, TanStack Query, Tailwind CSS, R
 
 Backend: Node.js 20 or later, TypeScript, Fastify, Zod for request and response validation.
 
-Database: SQLite through better-sqlite3 for the prototype, with a repository layer so PostgreSQL can replace it.
+Database: SQLite through built-in node:sqlite for the prototype, with a repository layer so PostgreSQL can replace it.
 
 Authentication: bcrypt password hashes, JWT in an httpOnly, SameSite=Strict cookie, role checks on every route. Simulated MFA with a fixed development code, labelled as simulated.
 
