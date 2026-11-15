@@ -1,12 +1,27 @@
-import { createServer } from '../apps/api/src/server.js';
-
 let appPromise: any = null;
 
 async function getFastifyApp() {
   if (!appPromise) {
-    appPromise = createServer().then(async (app) => {
+    appPromise = (async () => {
+      let serverMod: any;
+      try {
+        serverMod = await import('../apps/api/dist/server.js');
+      } catch (distErr: any) {
+        try {
+          serverMod = await import('../apps/api/src/server.js');
+        } catch (srcErr: any) {
+          throw new Error(
+            `Failed to load Kestrel server. Dist error: [${distErr?.message}]. Src error: [${srcErr?.message}].`
+          );
+        }
+      }
+      const { createServer } = serverMod;
+      const app = await createServer();
       await app.ready();
       return app;
+    })().catch((err) => {
+      appPromise = null;
+      throw err;
     });
   }
   return appPromise;
@@ -114,7 +129,9 @@ export default async function handler(req: any, res: any) {
     res.setHeader('content-type', 'application/json');
     return res.end(JSON.stringify({
       error: 'INTERNAL_SERVER_ERROR',
+      name: err?.name,
       message: err?.message || 'Server error during API execution',
+      stack: err?.stack,
     }));
   }
 }

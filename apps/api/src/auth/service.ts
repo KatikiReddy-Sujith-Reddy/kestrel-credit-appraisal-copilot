@@ -123,8 +123,8 @@ export class AuthService {
   }> {
     const db = getDatabase();
     const user = db.prepare(`
-      SELECT * FROM users WHERE lower(email) = lower(?)
-    `).get(email || 'sanjay.gupta@kestrel-synthetic.bank') as any;
+      SELECT * FROM users WHERE lower(email) = lower(?) OR lower(username) = lower(?)
+    `).get(email || 'sanjay.gupta@kestrel-synthetic.bank', email || 'sanjay.gupta@kestrel-synthetic.bank') as any;
 
     if (!user) {
       throw new Error('INVALID_CREDENTIALS: Owner identity not found');

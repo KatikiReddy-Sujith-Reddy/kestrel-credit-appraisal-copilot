@@ -3,8 +3,32 @@ import path from 'path';
 import { createRequire } from 'module';
 import { config } from '../config.js';
 
-const nodeRequire = createRequire(import.meta.url);
-const { DatabaseSync } = nodeRequire('node:sqlite');
+let DatabaseSync: any = null;
+let sqliteLoadError: string | null = null;
+
+try {
+  if (typeof (process as any).getBuiltinModule === 'function') {
+    const mod = (process as any).getBuiltinModule('node:sqlite');
+    if (mod?.DatabaseSync) {
+      DatabaseSync = mod.DatabaseSync;
+    }
+  }
+} catch (e: any) {
+  // fallback to createRequire
+}
+
+if (!DatabaseSync) {
+  try {
+    const nodeRequire = createRequire(import.meta.url);
+    const sqlite = nodeRequire('node:sqlite');
+    DatabaseSync = sqlite?.DatabaseSync;
+    if (!DatabaseSync) {
+      sqliteLoadError = 'node:sqlite loaded but DatabaseSync is undefined';
+    }
+  } catch (err: any) {
+    sqliteLoadError = err?.message || String(err);
+  }
+}
 
 export interface PreparedStatement {
   run(...params: any[]): { changes: number | bigint; lastInsertRowid: number | bigint };
@@ -70,6 +94,9 @@ class NodeSqliteAdapter implements KestrelDatabase {
 
 export function getDatabase(): KestrelDatabase {
   if (!dbInstance) {
+    if (!DatabaseSync) {
+      throw new Error(`SQLITE_NOT_AVAILABLE: node:sqlite DatabaseSync failed to load (${sqliteLoadError}). Ensure Node.js 22+ with SQLite support.`);
+    }
     try {
       if (!fs.existsSync(config.DATA_DIR)) {
         fs.mkdirSync(config.DATA_DIR, { recursive: true });

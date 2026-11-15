@@ -33,7 +33,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
   app.post('/api/v1/auth/owner-sign-in', async (req: FastifyRequest, reply: FastifyReply) => {
     const schema = z.object({
       hardwareToken: z.string().min(1),
-      email: z.string().email().optional(),
+      email: z.string().min(1).optional(),
     });
 
     const parsed = schema.safeParse(req.body);
